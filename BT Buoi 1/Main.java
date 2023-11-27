@@ -4,18 +4,7 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-       /* // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
-
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
-        }
-        */
 //        Cau 1,2,3
 
         cau1();
@@ -29,7 +18,7 @@ public class Main {
         System.out.println("Bình phương của số vừa nhập là: " + squareOfNumber());
 
 //        Cau 6
-        System.out.println("Thế kỷ của năm bạn vừa nhập là: Thế kỷ " + CenturyOfYear());
+        System.out.println("Thế kỷ của năm bạn vừa nhập là: Thế kỷ " + centuryOfYear());
 
 //        Cau 7
         System.out.println("Chỉ số BMI của bạn là: " + bmiIndex());
@@ -75,7 +64,7 @@ public class Main {
     }
 
     //    Cau 6
-    static int CenturyOfYear() {
+    static int centuryOfYear() {
         Scanner scn = new Scanner(System.in);
         System.out.println("Nhập vào 1 năm bất kỳ:");
         int a = scn.nextInt();
