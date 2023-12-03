@@ -9,10 +9,9 @@ public class Bai1 {
     }
 
     static void multipleTenTimes(String str) {
-        String strFinal = "";
+        System.out.println("Chuoi sau khi sao chep 10 lan: ");
         for (int i = 1; i <= 10; i++) {
-            strFinal += str;
+            System.out.print(str);
         }
-        System.out.println("Chuoi sau khi sao chep 10 lan: " + strFinal);
     }
 }
