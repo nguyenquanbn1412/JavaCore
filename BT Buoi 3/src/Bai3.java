@@ -11,11 +11,10 @@ public class Bai3 {
     }
 
     static void multipleTimes(String str, int n) {
-        String strFinal = "";
-        for (int i = 1; i <= n-1; i++) {
-            strFinal = strFinal + str + "-";
+        System.out.println("Chuoi sau khi sao chep n lan:");
+        for (int i = 1; i <= n - 1; i++) {
+            System.out.print(str + "-");
         }
-        strFinal += str;
-        System.out.println("Chuoi sau khi sao chep n lan: " + strFinal);
+        System.out.print(str);
     }
 }

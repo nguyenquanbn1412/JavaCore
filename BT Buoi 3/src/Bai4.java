@@ -12,8 +12,10 @@ public class Bai4 {
 
     static void sumOfNumber(int m, int n) {
         int sum = 0;
-        for (int i = m; i <= n; i += 5) {
-            sum+=i;
+        for (int i = m; i <= n; i++) {
+            if (i % 5 == 0) {
+                sum += i;
+            }
         }
         System.out.println("Tong cac so chia het cho 5 tu so thu nhat den so thu 2 la: " + sum);
     }

@@ -19,6 +19,9 @@ public class Bai6 {
             } else if (i % 3 == 0) {
                 System.out.println("Fizz: " + i);
             }
+//            else {
+//
+//            }
         }
     }
 }
