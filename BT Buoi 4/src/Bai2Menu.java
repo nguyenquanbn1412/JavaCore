@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Bai2_menu {
+public class Bai2Menu {
     public static void main(String[] args) {
         menuArrOption();
     }
