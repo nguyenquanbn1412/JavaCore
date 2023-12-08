@@ -19,47 +19,56 @@ public class ThucHanhArray {
         //Khoi tao mang
         System.out.println("Ban chuan bi khoi tao mang, hay nhap so phan tu cho mang: ");
         int n = checkIsNumber(scn);
-        if (n > 0) {
-            int[] arr = new int[n];
-
-            //Nhap cac phan tu
-            System.out.println("Nhap tung phan tu cho mang:");
-            for (int i = 0; i < n; i++) {
-                arr[i] = checkIsNumber(scn);
-            }
-
-            //Thuc hien cac chuc nang
-            while (m != 4) {
-                System.out.println("**********MENU**********");
-                System.out.println("1. In ra các phần tử trong mảng");
-                System.out.println("2. Tính tổng các phần tử trong mảng");
-                System.out.println("3. Tìm phần tử nhỏ nhất");
-                System.out.println("4. Tìm phần tử lớn nhất");
-                System.out.println("5. Đếm số lượng phần tử chẵn");
-                System.out.println("6. Đếm số lượng phần tử lẻ");
-                System.out.println("7. Thoát!");
-                m = checkIsNumber(scn);
-                switch (m) {
-                    case 1:
-                        printArr(arr);
-                        break;
-                    case 2:
-                        sumOfArr(arr);
-                        break;
-                    case 3:
-                        //changeArr(arr);
-                        break;
-                    case 4:
-                        System.out.println("Good bye!");
-                        break;
-                    default:
-                        System.out.println("Ban can nhap theo goi y cua menu!");
-                        break;
-                }
-            }
-        } else {
-            System.out.println("Mang khong hop le!");
+        if (n <= 0) {
+            System.out.println("So phan tu phai lon hon 0");
+            return;
         }
+        int[] arr = new int[n];
+        //Nhap cac phan tu
+        System.out.println("Nhap tung phan tu cho mang:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = checkIsNumber(scn);
+        }
+
+        //Thuc hien cac chuc nang
+        while (m != 7) {
+            System.out.println("**********MENU**********");
+            System.out.println("1. In ra các phần tử trong mảng");
+            System.out.println("2. Tính tổng các phần tử trong mảng");
+            System.out.println("3. Tìm phần tử nhỏ nhất");
+            System.out.println("4. Tìm phần tử lớn nhất");
+            System.out.println("5. Đếm số lượng phần tử chẵn");
+            System.out.println("6. Đếm số lượng phần tử lẻ");
+            System.out.println("7. Thoát!");
+            m = checkIsNumber(scn);
+            switch (m) {
+                case 1:
+                    printArr(arr);
+                    break;
+                case 2:
+                    sumOfArr(arr);
+                    break;
+                case 3:
+                    minOfArr(arr);
+                    break;
+                case 4:
+                    maxOfArr(arr);
+                    break;
+                case 5:
+                    countEvenNumber(arr);
+                    break;
+                case 6:
+                    countOddNumber(arr);
+                    break;
+                case 7:
+                    System.out.println("Good bye!");
+                    break;
+                default:
+                    System.out.println("Ban can nhap theo goi y cua menu!");
+                    break;
+            }
+        }
+
     }
 
     static void printArr(int[] arr) {
@@ -82,7 +91,43 @@ public class ThucHanhArray {
         System.out.println("Tong cac phan tu trong mang la: " + sum);
     }
 
-    static void minOfArr(int[] arr) {
+    static void maxOfArr(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        for (int j : arr) {
+            if (j > max) {
+                max = j;
+            }
+        }
+        System.out.println("Phan tu lon nhat trong mang la: " + max);
+    }
 
+    static void minOfArr(int[] arr) {
+        int min = Integer.MAX_VALUE;
+        for (int j : arr) {
+            if (j < min) {
+                min = j;
+            }
+        }
+        System.out.println("Phan tu nho nhat trong mang la: " + min);
+    }
+
+    static void countEvenNumber(int[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 == 0) {
+                count++;
+            }
+        }
+        System.out.println("So luong phan tu chan trong mang la: " + count);
+    }
+
+    static void countOddNumber(int[] arr) {
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (i % 2 != 0) {
+                count++;
+            }
+        }
+        System.out.println("So luong phan tu le trong mang la: " + count);
     }
 }
