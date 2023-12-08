@@ -5,6 +5,10 @@ public class Cau1_PrintShape {
         Scanner scn = new Scanner(System.in);
         System.out.println("Nhap do dai canh :");
         int m = checkIsNumber(scn);
+        if (m <= 0) {
+			System.out.println("Ban can nhap 1 so nguyen duong!");
+			return;
+		}
         System.out.println("Hinh vuong va hinh tam giac voi do dai vua nhap:");
         drawSquare(m);
         drawTriangle(m);
