@@ -8,6 +8,10 @@ public class Cau5_TwoDimensionArray {
         int a = checkIsNumber(scn);
         System.out.println("Nhap vao so cot cua mang: ");
         int b = checkIsNumber(scn);
+        if (a <= 0 || b <= 0) {
+            System.out.println("Ban can nhap so dong va so cot la nhung so nguyen duong!");
+            return;
+        }
         int[][] arr = new int[a][b];
         inputForArr(scn, arr);
         printArr(arr);
