@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ThucHanhArrayB1 {
+public class ThucHanhArrB1 {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         System.out.println("Ban dang khoi tao mang, nhap so phan tu cua mang:");
