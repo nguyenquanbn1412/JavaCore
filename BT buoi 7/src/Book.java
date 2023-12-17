@@ -7,13 +7,12 @@ public class Book {
     private int year;
 
 
-    //Constructor
-
-
+    //Replace this constructor with factory method
     private Book() {
     }
 
-    private Book(int id, String title, String author, String category, String publisher, int year) {
+    //Replace this constructor with builder
+    public Book(int id, String title, String author, String category, String publisher, int year) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -22,24 +21,8 @@ public class Book {
         this.year = year;
     }
 
-    public static Book createBook() {
+    public static Book newBook() {
         return new Book();
-    }
-
-    public static Book createBook1(int id, String title, String author, String category, String publisher, int year) {
-        return new Book(id, title, author, category, publisher, year);
-    }
-
-    static void test(int a) {
-
-    }
-
-    void test() {
-
-    }
-
-    public Book createBook1() {
-        return createBook1(id, title, author, category, publisher, year);
     }
 
     public int getId() {
@@ -50,7 +33,6 @@ public class Book {
         this.id = id;
         return this;
     }
-
 
     public String getTitle() {
         return title;
@@ -107,5 +89,9 @@ public class Book {
                 ", publisher='" + publisher + '\'' +
                 ", year=" + year +
                 '}';
+    }
+
+    public Book createBook() {
+        return new Book(id, title, author, category, publisher, year);
     }
 }
