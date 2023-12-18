@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ProductService {
     static int checkNumber(Scanner scn) {
         while (!scn.hasNextInt()) {
-            System.out.println("Ban can nhap vao 1 so nguyen");
+            System.out.println("Ban can nhap vao 1 so!");
             scn.next();
         }
         return scn.nextInt();
