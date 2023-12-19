@@ -78,28 +78,35 @@ public class StudentService extends StudentViewList implements StudentModifier, 
     @Override
     public void sortListStudent(List<Student> lstStudents) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Chon kieu sap xep ma ban muon:");
-        System.out.println("1. Sap xep theo ten");
-        System.out.println("2. Sap xep theo tuoi");
-        System.out.println("3. Sap xep theo diem");
-        int optionSort = checkIntNumber(scanner);
-        switch (optionSort) {
-            case 1:
-                lstStudents.sort(Comparator.comparing(Student::getStudentName));
-                break;
-            case 2:
-                lstStudents.sort(Comparator.comparing(Student::getStudentAge));
-                break;
-            case 3:
-                lstStudents.sort(Comparator.comparing(Student::getStudentPoint));
-                break;
-            default:
-                System.out.println("Khong co kieu sap xep khac!");
-                break;
+        int optionSort = 0;
+        while (optionSort != 4) {
+            System.out.println("Chon kieu sap xep ma ban muon:");
+            System.out.println("1. Sap xep theo ten");
+            System.out.println("2. Sap xep theo tuoi");
+            System.out.println("3. Sap xep theo diem");
+            System.out.println("4. Thoat");
+            optionSort = checkIntNumber(scanner);
+            System.out.println("Danh sach sinh vien sau khi sap xep:");
+            switch (optionSort) {
+                case 1:
+                    lstStudents.sort(Comparator.comparing(Student::getStudentName));
+                    viewListStudent(lstStudents, null);
+                    break;
+                case 2:
+                    lstStudents.sort(Comparator.comparing(Student::getStudentAge));
+                    viewListStudent(lstStudents, null);
+                    break;
+                case 3:
+                    lstStudents.sort(Comparator.comparing(Student::getStudentPoint));
+                    viewListStudent(lstStudents, null);
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Khong co kieu sap xep khac!");
+                    break;
+            }
         }
-        System.out.println("Danh sach sinh vien sau khi sap xep:");
         viewListStudent(lstStudents, null);
     }
-
-
 }
