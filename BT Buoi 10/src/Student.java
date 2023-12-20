@@ -8,7 +8,6 @@ public class Student {
 
     private Student() {
     }
-
     public Student(int studentId, String studentName, int studentAge, String studentAddress, double studentPoint, String studentClassroom) {
         this.studentId = studentId;
         this.studentName = studentName;
