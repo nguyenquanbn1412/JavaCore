@@ -8,14 +8,13 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
 
     void startProgram(Scanner scanner, String fileName) {
         try {
-            int optionMenu = 0;
-            while (optionMenu != 4) {
+            while (true) {
                 System.out.println("-----------------MENU-----------------");
                 System.out.println("1. Dang nhap");
                 System.out.println("2. Dang ky");
                 System.out.println("3. Quen mat khau");
                 System.out.println("4. Thoat");
-                optionMenu = checkIntNumber(scanner);
+                int optionMenu = checkIntNumber(scanner);
                 scanner.nextLine();
                 switch (optionMenu) {
                     case 1:
@@ -28,7 +27,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                         userForgotPassword(scanner, fileName);
                         break;
                     case 4:
-                        break;
+                        return;
                     default:
                         System.out.println("Khong co chuc nang nay!");
                         break;
@@ -42,15 +41,14 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     }
 
     void loginSuccess(Scanner scanner, String fileName, User user) {
-        int optionMenu = 0;
-        while (optionMenu != 5) {
+        while (true) {
             System.out.println("-----------------MENU-----------------");
             System.out.println("1. Thay doi username");
             System.out.println("2. Thay doi email");
             System.out.println("3. Thay doi mat khau");
             System.out.println("4. Dang xuat");
             System.out.println("5. Thoat chuong trinh");
-            optionMenu = checkIntNumber(scanner);
+            int optionMenu = checkIntNumber(scanner);
             scanner.nextLine();
             switch (optionMenu) {
                 case 1:
@@ -64,9 +62,9 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                     break;
                 case 4:
                     userLogout(scanner, fileName);
-                    break;
+                    return;
                 case 5:
-                    break;
+                    return;
                 default:
                     System.out.println("Khong co chuc nang nay!");
                     break;
