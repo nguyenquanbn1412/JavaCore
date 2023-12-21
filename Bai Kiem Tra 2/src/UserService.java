@@ -86,15 +86,16 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
         try {
             System.out.println("Dang ky!");
             System.out.println("Nhap username:");
+            User user = new User();
             String username = scanner.nextLine();
+            user.setUsername(username);
             System.out.println("Nhap email:");
             String email = checkEmail(scanner);
+            user.setEmail(email);
             System.out.println("Nhap password:");
             String password = checkPassword(scanner);
-            User user = new User();
-            user.setUsername(username);
-            user.setUsername(email);
-            user.setUsername(password);
+            user.setPassword(password);
+            System.out.println(user.toString());
             convertObjectToJsonFile("user.json", user);
         } catch (Exception e) {
             e.printStackTrace();
