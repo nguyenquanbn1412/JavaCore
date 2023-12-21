@@ -60,7 +60,7 @@ public abstract class AUserManager {
         return null;
     }
 
-    String checkEmail(Scanner scanner) {
+    String checkEmail(Scanner scanner, String fileName) {
         while (true) {
             String email = scanner.nextLine();
             String EMAIL_PATTERN =
@@ -68,13 +68,17 @@ public abstract class AUserManager {
             if (!Pattern.matches(EMAIL_PATTERN, email)) {
                 System.out.println("Email khong hop le!\nVui long nhap lai:");
             } else {
-                return email;
+                if (isExistsUser(fileName, email)) {
+                    System.out.println("User nay da ton tai!");
+                } else {
+                    return email;
+                }
+
             }
         }
     }
 
     String checkPassword(Scanner scanner) {
-
         while (true) {
             String password = scanner.nextLine();
             Pattern pattern = Pattern.compile("\\S{7,15}");
@@ -93,5 +97,16 @@ public abstract class AUserManager {
             scn.next();
         }
         return scn.nextInt();
+    }
+
+    boolean isExistsUser(String fileName, String email) {
+        List<User> users = getListObjectFromJsonFile(fileName);
+        for (User user :
+                users) {
+            if (user.getEmail().equals(email)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

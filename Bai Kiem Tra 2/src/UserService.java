@@ -22,7 +22,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                         userLogin(scanner, fileName);
                         break;
                     case 2:
-                        userRegister(scanner);
+                        userRegister(scanner, fileName);
                         break;
                     case 3:
                         userForgotPassword(scanner, fileName);
@@ -82,15 +82,15 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     }
 
     @Override
-    public void userRegister(Scanner scanner) {
+    public void userRegister(Scanner scanner, String fileName) {
         try {
-            System.out.println("Dang ky!");
+            System.out.println("DANG KY!");
             System.out.println("Nhap username:");
             User user = new User();
             String username = scanner.nextLine();
             user.setUsername(username);
             System.out.println("Nhap email:");
-            String email = checkEmail(scanner);
+            String email = checkEmail(scanner, fileName);
             user.setEmail(email);
             System.out.println("Nhap password:");
             String password = checkPassword(scanner);
@@ -104,11 +104,11 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     @Override
     public void userLogin(Scanner scanner, String fileName) {
         try {
-            System.out.println("Dang nhap!");
+            System.out.println("DANG NHAP!");
             System.out.println("Nhap email:");
-            String email = scanner.nextLine();
+            String email = checkEmail(scanner, fileName);
             System.out.println("Nhap password:");
-            String password = scanner.nextLine();
+            String password = checkPassword(scanner);
             List<User> users = getListObjectFromJsonFile(fileName);
             for (User user : users) {
                 if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
@@ -127,7 +127,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     @Override
     public void userForgotPassword(Scanner scanner, String fileName) {
         System.out.println("Vui long nhap email cua ban:");
-        String email = checkEmail(scanner);
+        String email = checkEmail(scanner, fileName);
         List<User> users = getListObjectFromJsonFile(fileName);
         for (User user : users) {
             if (user.getEmail().equals(email)) {
