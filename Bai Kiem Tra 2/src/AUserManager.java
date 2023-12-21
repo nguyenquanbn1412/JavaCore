@@ -62,24 +62,27 @@ public abstract class AUserManager {
 
     String checkEmail(Scanner scanner) {
         while (true) {
+            String email = scanner.nextLine();
             String EMAIL_PATTERN =
                     "^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$";
-            if (!Pattern.matches(EMAIL_PATTERN, scanner.nextLine())) {
-                System.out.println("Email khong hop le!\nVui long nhap lai!");
+            if (!Pattern.matches(EMAIL_PATTERN, email)) {
+                System.out.println("Email khong hop le!\nVui long nhap lai:");
             } else {
-                return scanner.nextLine();
+                return email;
             }
         }
     }
 
     String checkPassword(Scanner scanner) {
+
         while (true) {
+            String password = scanner.nextLine();
             Pattern pattern = Pattern.compile("\\S{7,15}");
-            boolean isPassword = pattern.matcher(scanner.nextLine()).matches();
+            boolean isPassword = pattern.matcher(password).matches();
             if (!isPassword) {
                 System.out.println("Mat khau khong hop le!\nVui long nhap lai!");
             } else {
-                return scanner.nextLine();
+                return password;
             }
         }
     }
