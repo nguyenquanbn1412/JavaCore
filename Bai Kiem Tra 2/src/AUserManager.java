@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public abstract class AUserManager {
     abstract void userChangeUsername(Scanner scanner, User user);
 
-    abstract void userChangeEmail(Scanner scanner, User user);
+    abstract void userChangeEmail(Scanner scanner, User user, String fileName);
 
     abstract void userChangePassword(Scanner scanner, User user);
 
@@ -60,7 +60,7 @@ public abstract class AUserManager {
         return null;
     }
 
-    boolean checkEmail(String email) {
+    boolean checkLegalEmail(String email) {
         String EMAIL_PATTERN =
                 "^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$";
         return Pattern.matches(EMAIL_PATTERN, email);

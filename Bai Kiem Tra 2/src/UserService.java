@@ -55,7 +55,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                     userChangeUsername(scanner, user);
                     break;
                 case 2:
-                    userChangeEmail(scanner, user);
+                    userChangeEmail(scanner, user, fileName);
                     break;
                 case 3:
                     userChangePassword(scanner, user);
@@ -90,7 +90,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             System.out.println("Nhap email:");
             while (true) {
                 String email = scanner.nextLine();
-                if (checkEmail(email)) {
+                if (checkLegalEmail(email)) {
                     if (!isExistsEmail(fileName, email)) {
                         user.setEmail(email);
                         break;
@@ -167,14 +167,26 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
         System.out.println("Nhap username moi:");
         String username = scanner.nextLine();
         user.setUsername(username);
+        printUser(user);
     }
 
     @Override
-    void userChangeEmail(Scanner scanner, User user) {
+    void userChangeEmail(Scanner scanner, User user, String fileName) {
         System.out.println("Nhap email moi:");
-        String email = scanner.nextLine();
-        user.setUsername(email);
-        printUser(user);
+        while (true) {
+            String email = scanner.nextLine();
+            if (checkLegalEmail(email)) {
+                if (!isExistsEmail(fileName, email)) {
+                    user.setEmail(email);
+                    printUser(user);
+                    break;
+                } else {
+                    System.out.println("Email da ton tai!\nVui long nhap lai email:");
+                }
+            } else {
+                System.out.println("Email khong hop le!\nVui long nhap lai email:");
+            }
+        }
     }
 
     @Override
