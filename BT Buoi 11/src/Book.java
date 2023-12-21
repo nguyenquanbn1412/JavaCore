@@ -1,7 +1,6 @@
 import java.util.Arrays;
 
 public class Book {
-    // id, title, category, author, page_number, release_year, với category là một mảng String
     private int id;
     private String title;
     private String[] category;
