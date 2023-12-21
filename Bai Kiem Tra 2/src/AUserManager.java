@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -56,7 +57,6 @@ public abstract class AUserManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return null;
     }
 
@@ -68,10 +68,13 @@ public abstract class AUserManager {
 
     boolean isExistsEmail(String fileName, String email) {
         List<User> users = getListObjectFromJsonFile(fileName);
-        for (User user :
-                users) {
-            if (user.getEmail().equals(email)) {
-                return true;
+        Optional<List<User>> usersOptional = Optional.ofNullable(users);
+        if (usersOptional.isPresent()) {
+            for (User user :
+                    users) {
+                if (user.getEmail().equals(email)) {
+                    return true;
+                }
             }
         }
         return false;

@@ -1,7 +1,9 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class UserService extends AUserManager implements IUserLogin, IUserRegister, IUserForgotPassword {
@@ -104,7 +106,9 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             System.out.println("Nhap password:");
             String password = checkPassword(scanner);
             user.setPassword(password);
-            convertObjectToJsonFile("user.json", user);
+            List<User> users = new ArrayList<>();
+            users.add(user);
+            convertObjectToJsonFile("user.json", users);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -119,14 +123,18 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             System.out.println("Nhap password:");
             String password = scanner.nextLine();
             List<User> users = getListObjectFromJsonFile(fileName);
-            for (User user : users) {
-                if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                    System.out.println("Xin chao " + user.getUsername() + "!\nBan co the thuc hien cac cong viec sau:");
-                    loginSuccess(scanner, fileName, user);
-                    return;
+            Optional<List<User>> usersOptional = Optional.ofNullable(users);
+            if (usersOptional.isPresent()) {
+                for (User user : users) {
+                    if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                        System.out.println("Xin chao " + user.getUsername() + "!\nBan co the thuc hien cac cong viec sau:");
+                        loginSuccess(scanner, fileName, user);
+                        return;
+                    }
                 }
+            } else {
+                System.out.println("Tai khoan hoac mat khau khong chinh xac!");
             }
-            System.out.println("Tai khoan hoac mat khau khong chinh xac!");
         } catch (Exception e) {
             e.printStackTrace();
         }
