@@ -91,7 +91,6 @@ public class BookService extends ABookService implements IBookService_Find, IBoo
                                 //System.out.println(book.toString());
                                 String studentJson = gson.toJson(book);
                                 System.out.println(studentJson);
-                                return;
                             }
                         }
                         break;
