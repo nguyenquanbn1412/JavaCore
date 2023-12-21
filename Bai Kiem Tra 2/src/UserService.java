@@ -95,12 +95,10 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             System.out.println("Nhap password:");
             String password = checkPassword(scanner);
             user.setPassword(password);
-            System.out.println(user.toString());
             convertObjectToJsonFile("user.json", user);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
