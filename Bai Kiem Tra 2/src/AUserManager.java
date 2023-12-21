@@ -47,12 +47,12 @@ public abstract class AUserManager {
             Reader reader = Files.newBufferedReader(Paths.get(fileName));
 
             // Đọc thông tin từ file và binding và class
-            List<User> students = Arrays.asList(gson.fromJson(reader, User[].class));
+            List<User> user = Arrays.asList(gson.fromJson(reader, User[].class));
 
             // Đọc file xong thì đóng lại
             // Và trả về kết quả
             reader.close();
-            return students;
+            return user;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,22 +60,21 @@ public abstract class AUserManager {
         return null;
     }
 
-    String checkEmail(Scanner scanner, String fileName) {
-        while (true) {
-            String email = scanner.nextLine();
-            String EMAIL_PATTERN =
-                    "^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$";
-            if (!Pattern.matches(EMAIL_PATTERN, email)) {
-                System.out.println("Email khong hop le!\nVui long nhap lai:");
-            } else {
-                if (isExistsUser(fileName, email)) {
-                    System.out.println("User nay da ton tai!");
-                } else {
-                    return email;
-                }
+    boolean checkEmail(String email) {
+        String EMAIL_PATTERN =
+                "^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$";
+        return Pattern.matches(EMAIL_PATTERN, email);
+    }
 
+    boolean isExistsEmail(String fileName, String email) {
+        List<User> users = getListObjectFromJsonFile(fileName);
+        for (User user :
+                users) {
+            if (user.getEmail().equals(email)) {
+                return true;
             }
         }
+        return false;
     }
 
     String checkPassword(Scanner scanner) {
@@ -97,16 +96,5 @@ public abstract class AUserManager {
             scn.next();
         }
         return scn.nextInt();
-    }
-
-    boolean isExistsUser(String fileName, String email) {
-        List<User> users = getListObjectFromJsonFile(fileName);
-        for (User user :
-                users) {
-            if (user.getEmail().equals(email)) {
-                return true;
-            }
-        }
-        return false;
     }
 }

@@ -90,8 +90,19 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             String username = scanner.nextLine();
             user.setUsername(username);
             System.out.println("Nhap email:");
-            String email = checkEmail(scanner, fileName);
-            user.setEmail(email);
+            while (true) {
+                String email = scanner.nextLine();
+                if (checkEmail(email)) {
+                    if (!isExistsEmail(fileName, email)) {
+                        user.setEmail(email);
+                        break;
+                    } else {
+                        System.out.println("Tai khoan da ton tai!\nVui long nhap lai email:");
+                    }
+                } else {
+                    System.out.println("Email khong hop le!\nVui long nhap lai email:");
+                }
+            }
             System.out.println("Nhap password:");
             String password = checkPassword(scanner);
             user.setPassword(password);
@@ -106,9 +117,9 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
         try {
             System.out.println("DANG NHAP!");
             System.out.println("Nhap email:");
-            String email = checkEmail(scanner, fileName);
+            String email = scanner.nextLine();
             System.out.println("Nhap password:");
-            String password = checkPassword(scanner);
+            String password = scanner.nextLine();
             List<User> users = getListObjectFromJsonFile(fileName);
             for (User user : users) {
                 if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
@@ -117,7 +128,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                     return;
                 }
             }
-            System.out.println("Email hoac mat khau khong chinh xac!");
+            System.out.println("Tai khoan hoac mat khau khong chinh xac!");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -127,27 +138,25 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     @Override
     public void userForgotPassword(Scanner scanner, String fileName) {
         System.out.println("Vui long nhap email cua ban:");
-        String email = checkEmail(scanner, fileName);
-        List<User> users = getListObjectFromJsonFile(fileName);
-        for (User user : users) {
-            if (user.getEmail().equals(email)) {
-                while (true) {
-                    System.out.println("Vui long nhap mat khau moi:");
-                    String password = checkPassword(scanner);
-                    System.out.println("Nhap lai mat khau moi:");
-                    String passwordAgain = checkPassword(scanner);
-                    if (password.equals(passwordAgain)) {
-                        System.out.println("Vui long dang nhap lai:");
-                        userLogin(scanner, fileName);
-                        return;
-                    } else {
-                        System.out.println("Mat khau khong trung khop!\nVui long nhap lai!");
-                    }
+        String email = scanner.nextLine();
+        if (isExistsEmail(fileName, email)) {
+            while (true) {
+                System.out.println("Vui long nhap mat khau moi:");
+                String password = checkPassword(scanner);
+                System.out.println("Nhap lai mat khau moi:");
+                String passwordAgain = checkPassword(scanner);
+                if (password.equals(passwordAgain)) {
+                    System.out.println("Cai dat mat khau thanh cong!");
+                    System.out.println("Vui long dang nhap lai!");
+                    userLogin(scanner, fileName);
+                    return;
+                } else {
+                    System.out.println("Mat khau khong trung khop!\nVui long nhap lai!");
                 }
-
             }
+        } else {
+            System.out.println("Tai khoan khong ton tai!");
         }
-        System.out.println("Tai khoan khong ton tai!");
     }
 
     @Override
