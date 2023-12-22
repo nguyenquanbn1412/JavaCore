@@ -35,7 +35,6 @@ public abstract class AUserManager {
         }
     }
 
-    // 1. Lấy List object từ file json
     public List<User> getListObjectFromJsonFile(String fileName) {
         try {
             // Khởi tạo đối tượng gson

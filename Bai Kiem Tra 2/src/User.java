@@ -61,6 +61,7 @@ public class User {
     // Override the hashCode method to ensure proper functioning in collections
     @Override
     public int hashCode() {
+
         return (email != null ? email.hashCode() : 0);
     }
 }
