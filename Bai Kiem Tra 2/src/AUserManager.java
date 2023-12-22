@@ -13,7 +13,7 @@ public abstract class AUserManager {
 
     abstract void userChangeEmail(Scanner scanner, User user, String fileName);
 
-    abstract void userChangePassword(Scanner scanner, User user);
+    abstract void userChangePassword(Scanner scanner, User user, String fileName);
 
     abstract void userLogout(Scanner scanner, String fileName);
 

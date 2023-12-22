@@ -59,7 +59,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                     userChangeEmail(scanner, user, fileName);
                     break;
                 case 3:
-                    userChangePassword(scanner, user);
+                    userChangePassword(scanner, user, fileName);
                     break;
                 case 4:
                     userLogout(scanner, fileName);
@@ -189,7 +189,13 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             String email = scanner.nextLine();
             if (checkLegalEmail(email)) {
                 if (!isExistsEmail(fileName, email)) {
-                    user.setEmail(email);
+                    ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
+                    int indexOfUser = users.indexOf(user);
+                    System.out.println("Nhap email moi:");
+                    String emailNew = scanner.nextLine();
+                    user.setEmail(emailNew);
+                    users.set(indexOfUser, user);
+                    System.out.println("Cap nhat email thanh cong!");
                     printUser(user);
                     break;
                 } else {
@@ -202,10 +208,14 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     }
 
     @Override
-    void userChangePassword(Scanner scanner, User user) {
+    void userChangePassword(Scanner scanner, User user, String fileName) {
+        ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
+        int indexOfUser = users.indexOf(user);
         System.out.println("Nhap password moi:");
-        String email = scanner.nextLine();
-        user.setUsername(email);
+        String password = scanner.nextLine();
+        user.setPassword(password);
+        users.set(indexOfUser, user);
+        System.out.println("Cap nhat password thanh cong!");
         printUser(user);
     }
 }
