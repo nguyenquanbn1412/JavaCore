@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+
 public class UserService extends AUserManager implements IUserLogin, IUserRegister, IUserForgotPassword {
     void startProgram(Scanner scanner, String fileName) {
         try {
@@ -52,7 +53,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             scanner.nextLine();
             switch (optionMenu) {
                 case 1:
-                    userChangeUsername(scanner, user);
+                    userChangeUsername(scanner, user, fileName);
                     break;
                 case 2:
                     userChangeEmail(scanner, user, fileName);
@@ -82,7 +83,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     @Override
     public void userRegister(Scanner scanner, String fileName) {
         try {
-            System.out.println("DANG KY!");
+            System.out.println("***************DANG KY***************");
             System.out.println("Nhap username:");
             User user = new User();
             String username = scanner.nextLine();
@@ -104,7 +105,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             System.out.println("Nhap password:");
             String password = checkPassword(scanner);
             user.setPassword(password);
-             ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
+            ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
             users.add(user);
             convertObjectToJsonFile("user.json", users);
         } catch (Exception e) {
@@ -115,7 +116,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     @Override
     public void userLogin(Scanner scanner, String fileName) {
         try {
-            System.out.println("DANG NHAP!");
+            System.out.println("***************DANG NHAP***************");
             System.out.println("Nhap email:");
             String email = scanner.nextLine();
             System.out.println("Nhap password:");
@@ -170,10 +171,14 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     }
 
     @Override
-    void userChangeUsername(Scanner scanner, User user) {
+    void userChangeUsername(Scanner scanner, User user, String fileName) {
+        ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
+        int indexOfUser = users.indexOf(user);
         System.out.println("Nhap username moi:");
         String username = scanner.nextLine();
         user.setUsername(username);
+        users.set(indexOfUser, user);
+        System.out.println("Cap nhat username thanh cong!");
         printUser(user);
     }
 

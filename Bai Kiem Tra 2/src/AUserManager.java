@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public abstract class AUserManager {
-    abstract void userChangeUsername(Scanner scanner, User user);
+    abstract void userChangeUsername(Scanner scanner, User user, String fileName);
 
     abstract void userChangeEmail(Scanner scanner, User user, String fileName);
 
