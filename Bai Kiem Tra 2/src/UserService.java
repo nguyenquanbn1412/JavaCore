@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
-
 public class UserService extends AUserManager implements IUserLogin, IUserRegister, IUserForgotPassword {
-
     void startProgram(Scanner scanner, String fileName) {
         try {
             while (true) {
