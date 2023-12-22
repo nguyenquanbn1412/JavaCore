@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class User {
@@ -45,5 +46,21 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    // Override the equals method to define the equality of CustomObjects
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        User that = (User) obj;
+        return Objects.equals(email, that.email);
+    }
+
+    // Override the hashCode method to ensure proper functioning in collections
+    @Override
+    public int hashCode() {
+        return (email != null ? email.hashCode() : 0);
     }
 }
