@@ -1,3 +1,5 @@
+
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -5,10 +7,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public abstract class AUserManager {
@@ -38,7 +37,7 @@ public abstract class AUserManager {
         }
     }
 
-    // 2. Lấy List object từ file json
+    // 1. Lấy List object từ file json
     public List<User> getListObjectFromJsonFile(String fileName) {
         try {
             // Khởi tạo đối tượng gson
@@ -46,16 +45,16 @@ public abstract class AUserManager {
 
             // Tạo đối tượng reader để đọc file
             Reader reader = Files.newBufferedReader(Paths.get(fileName));
-
             // Đọc thông tin từ file và binding và class
-            List<User> user = Arrays.asList(gson.fromJson(reader, User[].class));
+
+            List<User> users = Arrays.asList(gson.fromJson(reader, User[].class));
 
             // Đọc file xong thì đóng lại
             // Và trả về kết quả
             reader.close();
-            return user;
+            return users;
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return null;
     }

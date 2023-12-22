@@ -106,7 +106,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
             System.out.println("Nhap password:");
             String password = checkPassword(scanner);
             user.setPassword(password);
-            List<User> users = new ArrayList<>();
+             ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
             users.add(user);
             convertObjectToJsonFile("user.json", users);
         } catch (Exception e) {
@@ -132,8 +132,9 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                         return;
                     }
                 }
+                System.out.println("Tai khoan hoac mat khau khong chinh xac!\nVui long thu lai");
             } else {
-                System.out.println("Tai khoan hoac mat khau khong chinh xac!");
+                System.out.println("Tai khoan hoac mat khau khong chinh xac!\nVui long thu lai");
             }
         } catch (Exception e) {
             e.printStackTrace();
