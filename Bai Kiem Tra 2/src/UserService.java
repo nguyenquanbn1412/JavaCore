@@ -218,13 +218,30 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
     void userChangePassword(Scanner scanner, User user, String fileName) {
         ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
         int indexOfUser = users.indexOf(user);
-        System.out.println("Nhap password moi:");
-        String password = scanner.nextLine();
-        user.setPassword(password);
-        users.set(indexOfUser, user);
-        System.out.println("Cap nhat password thanh cong!");
-        //printUser(user);
-        convertObjectToJsonFile("user.json", users);
+
+        while (true) {
+            System.out.println("Vui long nhap mat khau moi:");
+            String password = checkPassword(scanner);
+            System.out.println("Nhap lai mat khau moi:");
+            String passwordAgain = checkPassword(scanner);
+            if (password.equals(passwordAgain)) {
+                user.setPassword(password);
+                users.set(indexOfUser, user);
+                convertObjectToJsonFile("user.json", users);
+                System.out.println("Cap nhat mat khau thanh cong!");
+                break;
+            } else {
+                System.out.println("Mat khau khong trung khop!\nVui long nhap lai!");
+            }
+        }
+
+//        System.out.println("Nhap password moi:");
+//        String password = scanner.nextLine();
+//        user.setPassword(password);
+//        users.set(indexOfUser, user);
+//        System.out.println("Cap nhat password thanh cong!");
+//        //printUser(user);
+//        convertObjectToJsonFile("user.json", users);
     }
 
 }
