@@ -44,16 +44,20 @@ public abstract class AUserManager {
             Reader reader = Files.newBufferedReader(Paths.get(fileName));
             // Đọc thông tin từ file và binding và class
 
-            List<User> users = Arrays.asList(gson.fromJson(reader, User[].class));
-
-            // Đọc file xong thì đóng lại
-            // Và trả về kết quả
-            reader.close();
-            return users;
+            //check file khong co data => list rong
+            if (gson.fromJson(reader, User[].class) == null) {
+                return Collections.emptyList(); //tuong duong List<User> users = new ArrayList<>();
+            } else {
+                List<User> users = Arrays.asList(gson.fromJson(reader, User[].class));
+                // Đọc file xong thì đóng lại
+                // Và trả về kết quả
+                reader.close();
+                return users;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return Collections.emptyList();
     }
 
     boolean checkLegalEmail(String email) {
