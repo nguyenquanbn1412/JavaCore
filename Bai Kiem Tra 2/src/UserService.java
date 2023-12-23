@@ -234,14 +234,6 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                 System.out.println("Mat khau khong trung khop!\nVui long nhap lai!");
             }
         }
-
-//        System.out.println("Nhap password moi:");
-//        String password = scanner.nextLine();
-//        user.setPassword(password);
-//        users.set(indexOfUser, user);
-//        System.out.println("Cap nhat password thanh cong!");
-//        //printUser(user);
-//        convertObjectToJsonFile("user.json", users);
     }
 
 }
