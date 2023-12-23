@@ -79,12 +79,14 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
         String userJson = gson.toJson(user);
         System.out.println(userJson);
     }
+
     void printUser(List<User> users) {
         System.out.println("Thong tin user sau khi cap nhat!");
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String userJson = gson.toJson(users);
         System.out.println(userJson);
     }
+
     @Override
     public void userRegister(Scanner scanner, String fileName) {
         try {
@@ -184,8 +186,8 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
         user.setUsername(username);
         users.set(indexOfUser, user);
         System.out.println("Cap nhat username thanh cong!");
-        printUser(users);
-        //  convertObjectToJsonFile("user.json", users);
+        //printUser(users);
+        convertObjectToJsonFile("user.json", users);
     }
 
     @Override
@@ -202,8 +204,8 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                     user.setEmail(emailNew);
                     users.set(indexOfUser, user);
                     System.out.println("Cap nhat email thanh cong!");
-                    printUser(user);
-                    //convertObjectToJsonFile("user.json", users);
+                    //printUser(user);
+                    convertObjectToJsonFile("user.json", users);
                     break;
                 } else {
                     System.out.println("Email da ton tai!\nVui long nhap lai email:");
@@ -223,8 +225,8 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
         user.setPassword(password);
         users.set(indexOfUser, user);
         System.out.println("Cap nhat password thanh cong!");
-        printUser(user);
-        //convertObjectToJsonFile("user.json", users);
+        //printUser(user);
+        convertObjectToJsonFile("user.json", users);
     }
 
 }

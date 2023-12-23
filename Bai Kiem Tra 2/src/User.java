@@ -1,5 +1,4 @@
 import java.util.Objects;
-import java.util.regex.Pattern;
 
 public class User {
     private String username;
@@ -61,7 +60,6 @@ public class User {
     // Override the hashCode method to ensure proper functioning in collections
     @Override
     public int hashCode() {
-
         return (email != null ? email.hashCode() : 0);
     }
 }
