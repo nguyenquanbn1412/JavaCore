@@ -199,9 +199,7 @@ public class UserService extends AUserManager implements IUserLogin, IUserRegist
                 if (!isExistsEmail(fileName, email)) {
                     ArrayList<User> users = new ArrayList<>(getListObjectFromJsonFile(fileName));
                     int indexOfUser = users.indexOf(user);
-                    System.out.println("Nhap email moi:");
-                    String emailNew = scanner.nextLine();
-                    user.setEmail(emailNew);
+                    user.setEmail(email);
                     users.set(indexOfUser, user);
                     System.out.println("Cap nhat email thanh cong!");
                     //printUser(user);
