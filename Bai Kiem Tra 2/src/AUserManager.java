@@ -45,10 +45,11 @@ public abstract class AUserManager {
             // Đọc thông tin từ file và binding và class
 
             //check file khong co data => list rong
-            if (gson.fromJson(reader, User[].class) == null) {
+            User[] userLstGson = gson.fromJson(reader, User[].class);
+            if (userLstGson == null) {
                 return Collections.emptyList(); //tuong duong List<User> users = new ArrayList<>();
             } else {
-                List<User> users = Arrays.asList(gson.fromJson(reader, User[].class));
+                List<User> users = Arrays.asList(userLstGson);
                 // Đọc file xong thì đóng lại
                 // Và trả về kết quả
                 reader.close();
