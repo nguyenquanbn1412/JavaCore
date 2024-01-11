@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.File;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
@@ -18,18 +19,23 @@ public abstract class AUserManager {
     abstract void userLogout(Scanner scanner, String fileName);
 
     // Ghi Object JSON file (Object là 1 đối tượng bất kỳ : Có thể là Single Object hoặc List Object)
+
     public void convertObjectToJsonFile(String fileName, Object obj) {
         try {
-            // Tạo đối tượng gson
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String filePathString = "user.json";
+            File f = new File(filePathString);
+            if (f.exists() && !f.isDirectory()) {
+                // Tạo đối tượng gson
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-            // Tạo đối tượng Writer để ghi nội dung vào file
-            Writer writer = Files.newBufferedWriter(Paths.get(fileName));
+                // Tạo đối tượng Writer để ghi nội dung vào file
+                Writer writer = Files.newBufferedWriter(Paths.get(fileName));
 
-            // Ghi object vào file
-            gson.toJson(obj, writer);
+                // Ghi object vào file
+                gson.toJson(obj, writer);
 
-            writer.close();
+                writer.close();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,24 +43,30 @@ public abstract class AUserManager {
 
     public List<User> getListObjectFromJsonFile(String fileName) {
         try {
-            // Khởi tạo đối tượng gson
-            Gson gson = new Gson();
+            String filePathString = "user.json";
+            File f = new File(filePathString);
+            if (f.exists() && !f.isDirectory()) {
+                // Khởi tạo đối tượng gson
+                Gson gson = new Gson();
 
-            // Tạo đối tượng reader để đọc file
-            Reader reader = Files.newBufferedReader(Paths.get(fileName));
-            // Đọc thông tin từ file và binding và class
+                // Tạo đối tượng reader để đọc file
+                Reader reader = Files.newBufferedReader(Paths.get(fileName));
+                // Đọc thông tin từ file và binding và class
 
-            //check file khong co data => list rong
-            User[] userArr = gson.fromJson(reader, User[].class);
-            if (userArr == null) {
-                return Collections.emptyList(); //tuong duong List<User> users = new ArrayList<>();
-            } else {
-                List<User> users = Arrays.asList(userArr);
-                // Đọc file xong thì đóng lại
-                // Và trả về kết quả
-                reader.close();
-                return users;
+                //check file khong co data => list rong
+                User[] userArr = gson.fromJson(reader, User[].class);
+                if (userArr == null) {
+                    return Collections.emptyList(); //tuong duong List<User> users = new ArrayList<>();
+                } else {
+                    List<User> users = Arrays.asList(userArr);
+                    // Đọc file xong thì đóng lại
+                    // Và trả về kết quả
+                    reader.close();
+                    return users;
+                }
             }
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
