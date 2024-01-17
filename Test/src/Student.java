@@ -74,6 +74,9 @@ public class Student {
                 '}';
     }
 
+    public void printInfo() {
+        System.out.println(id + " - " + name + " - " + email);
+    }
     public int getId() {
         return id;
     }
