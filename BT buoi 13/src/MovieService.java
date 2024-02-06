@@ -43,7 +43,7 @@ public class MovieService {
                 .count();
         System.out.println("\nNumber of Comedy movies: " + comedyCounter.count(movieQueue.getMovies()));
 
-        // Sort movies by title using lambda expression
+        // Sort movies by title using  Method References
         Set<Movie> movieSet = new TreeSet<>(Comparator.comparing(Movie::getTitle));
         movieQueue.setMovies(new LinkedList<>(movieSet));
 
@@ -51,7 +51,7 @@ public class MovieService {
         List<Movie> sortedByLength = sortMoviesByLength(movieQueue.getMovies());
         movieQueue.setMovies(new LinkedList<>(sortedByLength));
 
-        // Sort movies by views using Method References
+        // Sort movies by views using anonymous class
         List<Movie> sortedByViews = sortMoviesByViews(movieQueue.getMovies());
         movieQueue.setMovies(new LinkedList<>(sortedByViews));
 
