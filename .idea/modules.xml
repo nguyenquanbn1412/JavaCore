@@ -19,6 +19,11 @@
       <module fileurl="file://$PROJECT_DIR$/Thuc hanh buoi 4/Thuc hanh buoi 4.iml" filepath="$PROJECT_DIR$/Thuc hanh buoi 4/Thuc hanh buoi 4.iml" />
       <module fileurl="file://$PROJECT_DIR$/Thuc hanh buoi 5/Thuc hanh buoi 5.iml" filepath="$PROJECT_DIR$/Thuc hanh buoi 5/Thuc hanh buoi 5.iml" />
       <module fileurl="file://$PROJECT_DIR$/Thuc hanh buoi 7/Thuc hanh buoi 7.iml" filepath="$PROJECT_DIR$/Thuc hanh buoi 7/Thuc hanh buoi 7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/phuongtien/phuongtien.iml" filepath="$PROJECT_DIR$/Test/phuongtien/phuongtien.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/productmanagement/productmanagement.iml" filepath="$PROJECT_DIR$/Test/productmanagement/productmanagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/qlbenhvien/qlbenhvien.iml" filepath="$PROJECT_DIR$/Test/qlbenhvien/qlbenhvien.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/studentmanagement/studentmanagement.iml" filepath="$PROJECT_DIR$/Test/studentmanagement/studentmanagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Test/techstudent/techstudent.iml" filepath="$PROJECT_DIR$/Test/techstudent/techstudent.iml" />
     </modules>
   </component>
 </project>
