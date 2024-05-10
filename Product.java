@@ -223,5 +223,40 @@ public class Product_Main {
         productService.findProductByPrice(lstProduct, scanner);
     }
 }
+ // @GetMapping("/products/{id}")
+ //    public Product getProductById(@PathVariable String id) {
+ //        return products.stream()
+ //                .filter(product -> product.getId().equals(id))
+ //                .findFirst()
+ //                .orElse(null);
+ //    }
 
+ //    @GetMapping("/products/name-starts/{prefix}")
+ //    public List<Product> getProductsByNamePrefix(@PathVariable String prefix) {
+ //        return products.stream()
+ //                .filter(product -> product.getName().startsWith(prefix))
+ //                .collect(Collectors.toList());
+ //    }
+
+ //    @GetMapping("/products/price/{min}/{max}")
+ //    public List<Product> getProductsByPriceRange(@PathVariable int min, @PathVariable int max) {
+ //        return products.stream()
+ //                .filter(product -> product.getPrice() >= min && product.getPrice() <= max)
+ //                .collect(Collectors.toList());
+ //    }
+
+ //    @GetMapping("/products/brand/{brand}")
+ //    public List<Product> getProductsByBrand(@PathVariable String brand) {
+ //        return products.stream()
+ //                .filter(product -> product.getBrand().equals(brand))
+ //                .collect(Collectors.toList());
+ //    }
+
+ //    @GetMapping("/products/brand/{brand}/max-price")
+ //    public Product getMaxPriceProductByBrand(@PathVariable String brand) {
+ //        return products.stream()
+ //                .filter(product -> product.getBrand().equals(brand))
+ //                .max(Comparator.comparing(Product::getPrice))
+ //                .orElse(null);
+ //    }
 
